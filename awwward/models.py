@@ -25,9 +25,9 @@ class Rating(models.Model):
     usability = models.IntegerField(default=0)
     content = models.IntegerField(default=0)
     creator = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='commentor')
+        User, on_delete=models.CASCADE, related_name='rater')
     project = models.ForeignKey(
-        Project, on_delete=models.CASCADE, related_name='comments')
+        Project, on_delete=models.CASCADE, related_name='ratings')
     timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

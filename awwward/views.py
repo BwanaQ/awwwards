@@ -10,3 +10,4 @@ from .models import Project, Rating
 class ProjectListView(ListView):
     model = Project
     template_name = 'project_list.html'
+    paginate_by = 9
