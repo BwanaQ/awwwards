@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'rest_framework',
-
+    'phone_field',
+    'captcha',
+    'crispy_forms',
     # my apps
     'awwward',
     'api',
@@ -142,3 +144,4 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

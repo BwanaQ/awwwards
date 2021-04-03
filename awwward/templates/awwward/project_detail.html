@@ -1,0 +1,38 @@
+{% extends 'awwward/base.html' %} {% load static %} {% load crispy_form_tags %} {% block content %}
+<div class="row">
+    <div class="col-md-4">
+      <div class="card border-0 shadow">
+        <img
+          class="card-img-top"
+          src="{{project.image.url}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><strong>{{project.creator}}</strong><span class="float-end text muted "><small>{{project.timestamp}}</small></span></h5>
+          
+          <div class="card-footer">
+            <small class="text-uppercase">by {{project.creator}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    {% for rating in object.rating_set.all %}
+    <p>{{rating.design}}</p>
+    <p>{{rating.usability}}</p>
+    <p>{{rating.content}}</p>
+    <p>{{rating.creator.username}}</p>
+    <p>{{rating.timestamp}}</p>
+    {% endfor %}
+    <form method="post" action="/blog/comment">
+      {% csrf_token %}
+      <h3>Add a comment</h3>
+      {{ rating_form.as_p|crispy }}
+      <input type="hidden" name="entry" value="{{ blogentry.pk }}">
+      <p><input type="submit"></p>
+  </form>
+  </div>
+</div>
+{% endblock %}
+
