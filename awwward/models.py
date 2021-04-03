@@ -31,7 +31,7 @@ class Rating(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title
+        return f"{self.creator.username} rating for {self.project.title}"
 
     """def get_absolute_url(self):
         return reverse('project-detail', kwargs={'pk': self.pk})
