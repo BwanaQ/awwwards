@@ -1,24 +1,29 @@
 {% extends 'awwward/base.html' %} {% load static %} {% block content %}
-<h1>
-  <span><i class="bi bi-alarm"></i></span>Home
-</h1>
 <div class="row">
-  <div class="col-md-8">
-    {% for post in posts %}
-    <div class="card mb-5" style="width: 42rem; padding: 0px">
-      <div class="card-header">
-        <strong>{{ post.author }}</strong>
-      </div>
-      <div class="card-body">
-        <img class="gram-img" src="{% static 'blog/pic.jpg'%}" />
-      </div>
-      <div class="card-footer" style="margin: 0%">
-        <small class="text-muted"> on {{ post.date_posted }} </small>
+  <div class="col-md-12">
+    <p><strong> Site of the Day </strong> {{ now | date:"D d M Y"}}</p>
+  </div>
+</div>
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card border-0 shadow">
+        <img
+          class="card-img-top"
+          src="{% static 'awwward/1.jpg'%}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><strong>{{project.creator}}</strong><span class="float-end text muted "><small>{{project.timestamp}}</small></span></h5>
+          
+          <div class="card-footer">
+            <small class="text-uppercase">by {{project.creator}}</small>
+          </div>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </div>
     </div>
-
     {% endfor %}
   </div>
-  <div class="col-md-4"><h1>sidebar</h1></div>
 </div>
 {% endblock %}

@@ -1,3 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.imgbox {
+  display: grid;
+  height: 100%;
+}
+.center-fit {
+  max-width: 100%;
+  max-height: auto;
+  background: url("/static/screenshot.jpg");
+  margin: auto;
+}
 body,
 wrapper {
   min-height: 100vh;
@@ -13,11 +27,4 @@ wrapper {
 
 nav {
   padding: 0px 20px 0px 20px;
-}
-.card-body {
-  padding: 0px;
-}
-.gram-img {
-  width: 670px;
-  height: auto;
 }
