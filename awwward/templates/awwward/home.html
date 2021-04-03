@@ -1,0 +1,24 @@
+{% extends 'awwward/base.html' %} {% load static %} {% block content %}
+<h1>
+  <span><i class="bi bi-alarm"></i></span>Home
+</h1>
+<div class="row">
+  <div class="col-md-8">
+    {% for post in posts %}
+    <div class="card mb-5" style="width: 42rem; padding: 0px">
+      <div class="card-header">
+        <strong>{{ post.author }}</strong>
+      </div>
+      <div class="card-body">
+        <img class="gram-img" src="{% static 'blog/pic.jpg'%}" />
+      </div>
+      <div class="card-footer" style="margin: 0%">
+        <small class="text-muted"> on {{ post.date_posted }} </small>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  <div class="col-md-4"><h1>sidebar</h1></div>
+</div>
+{% endblock %}
