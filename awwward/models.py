@@ -34,3 +34,6 @@ class Rating(models.Model):
 
     def get_absolute_url(self):
         return reverse('awwward-detail', kwargs={'pk': self.pk})
+
+    def get_average(self):
+        return (int((self.design+self.usability+self.content)/3))
