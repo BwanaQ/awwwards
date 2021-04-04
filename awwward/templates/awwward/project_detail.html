@@ -3,7 +3,7 @@
 {% load static %} 
 {% block content %}
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6 mb-3">
       <div class="card border-0 shadow">
         <img
           class="card-img-top"
@@ -11,7 +11,7 @@
           alt="Card image cap"
         />
         <div class="card-body">
-          <h5 class="card-title"><strong>{{project.creator}}</strong><span class="float-end text muted "><small>{{project.timestamp}}</small></span></h5>
+          <h5 class="card-title"><strong>{{project.creator}}</strong><span class="float-end text muted "><small>{{project.timestamp| date:"D d M Y"}}</small></span></h5>
           
           <div class="card-footer">
             <small class="text-uppercase">by {{project.creator}}</small>
@@ -20,8 +20,8 @@
       </div>
     </div>
   
-  <div class="col-md-8">
-    <form method="post" action="/blog/comment">
+  <div class="col-md-6 mb-3">
+    <form method="post" action="{% url 'awwward-detail' project.id %}">
       {% csrf_token %}
       <h3>Add a rating</h3>
       {{ rating_form|crispy }}
@@ -31,6 +31,7 @@
   </div>
   <div class="row">
       {% for rating in project.ratings.all %}
+      <hr>
       <p>{{rating.creator.username}}</p>
       <p>{{rating.timestamp}}</p>
         <div class="col-4">

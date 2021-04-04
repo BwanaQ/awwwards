@@ -1,13 +1,13 @@
-# GALLERYA
+# AWWWARDS
 
-A Gallery app built on Django with a robust backend for adding photos, a search function and sorts images by categories
+A web application built on Django as a mockup for the site (awwwards), a search function and sorts images by categories
 
 ## Getting Started
 
 - clone this repo
 
 ```
-$ git clone https://github.com/BwanaQ/galleria.git
+$ git clone https://github.com/BwanaQ/awwwards.git
 ```
 
 ### Prerequisites
@@ -18,10 +18,10 @@ $ git clone https://github.com/BwanaQ/galleria.git
 
 ### Installing
 
-1. cd into the galleria folder
+1. cd into the awwwards folder
 
 ```
-$ cd galleria
+$ cd awwwards
 ```
 
 2. Add a python 3 environment
@@ -36,7 +36,7 @@ $ virtualenv env
 $ source env/bin/activate
 ```
 
-4. Install dependanies from requirements.txt
+4. Install dependancies from requirements.txt
 
 ```
 (env)$ pip install -r requirements.txt
@@ -56,7 +56,7 @@ $ source env/bin/activate
 
 ## Deployment
 
-to deploy to heroku simply create a project, attach your git hub repository and
+to deploy to heroku simply create a project and attach your git hub repository
 
 ## Built With
 
@@ -74,4 +74,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 - Thanks to [Toptal](https://www.toptal.com/developers/gitignore/api/django) for a beautiful .gitignore file
+- Thanks to [Firchow](http://circle.firchow.net/) for the pure css percentage circle
 - Inspiration - My Technical Mentor Kelvin Onkundi and The Olympians Team MC38
