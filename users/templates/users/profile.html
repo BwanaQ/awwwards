@@ -2,15 +2,17 @@
 <div class="row">
   <div class="col-sm-12 col-md-4 text-center">
     <div class="image_outer_container">
-      <div class="image_inner_container">
+      <div class="rounded-circle">
         <img
+          class="rounded-circle"
+          style= "width: 200px; height: 200px;"
           src="{{user.profile.image.url|default:'img/default-avatar.png' }}"
         />
       </div>
     </div>
   </div>
   <div class="col-md-8 col sm-1">
-    <h3 class="text-center">Profile Details</h3>
+    <h3 >Profile Details</h3>
     <p><strong> Username: </strong>{{user.username}}</p>
     <p><strong> Email: </strong>{{user.email}}</p>
     <p><strong> Phone Nummber: </strong>{{user.profile.phone_number}}</p>
@@ -25,7 +27,7 @@
         {{ u_form|crispy }} {{ p_form|crispy }}
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Update</button>
+        <button class="btn btn-outline-info mt-3" type="submit">Update</button>
       </div>
     </form>
   </div>

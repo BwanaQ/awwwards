@@ -76,7 +76,7 @@ class RatingCreateView(CreateView):
     form_class = RatingCreateForm
 
     def get_success_url(self):
-        return reverse('project-detail', kwargs={'pk': self.object.project.pk})
+        return reverse('awwward-detail', kwargs={'pk': self.object.project.pk})
 
     def form_valid(self, form):
         form.instance.creator = self.request.user

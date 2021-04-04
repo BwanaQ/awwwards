@@ -21,8 +21,8 @@
         <div class="card-footer">
           <small class="text-uppercase m-3 pt-2">by {{project.creator}}</small>
           {% if project.creator == user %}
-          <a href="#" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
-          <a href="#" class="btn btn-outline-primary btn-sm float-end m-2">Edit</a>
+          <a href="{% url 'awwward-delete' project.id %}" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
+          <a href="{% url 'awwward-update' project.id %}" class="btn btn-outline-primary btn-sm float-end m-2">Edit</a>
           {% endif %}
           <a href="{% url 'awwward-detail' project.id %}" class="btn btn-outline-secondary btn-sm float-end m-2">Details</a>
         </div>

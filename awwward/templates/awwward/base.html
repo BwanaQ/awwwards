@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,12 +109,12 @@
                     ></a>
                   </li>                
                 <li class="nav-item">
-                  <a class="nav-link" href="#"
-                    >Add Image</a
+                  <a class="nav-link" href="{% url 'awwward-create' %}"
+                    >Add Project</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}">{{user.username}}</a>
+                  <a class="nav-link text-capitalize" href="{% url 'profile' %}">{{user.username}}</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout' %}">Logout</a>

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'captcha',
     'crispy_forms',
 
-
     # my apps
     'awwward',
     'api',

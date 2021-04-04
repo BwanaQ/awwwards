@@ -16,7 +16,7 @@ class Project(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('project-detail', kwargs={'pk': self.pk})
+        return reverse('awwward-detail', kwargs={'pk': self.pk})
 
 
 class Rating(models.Model):
@@ -33,4 +33,4 @@ class Rating(models.Model):
         return f"{self.creator.username} rating for {self.project.title}"
 
     def get_absolute_url(self):
-        return reverse('project-detail', kwargs={'pk': self.pk})
+        return reverse('awwward-detail', kwargs={'pk': self.pk})
