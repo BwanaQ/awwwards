@@ -30,17 +30,51 @@
   </form>
   </div>
   <div class="row">
-    <div class="col-md-1">
       {% for rating in project.ratings.all %}
-      <p>{{rating.design}}</p>
-      <p>{{rating.usability}}</p>
-      <p>{{rating.content}}</p>
       <p>{{rating.creator.username}}</p>
       <p>{{rating.timestamp}}</p>
+        <div class="col-4">
+          <div class="c100 p{{ rating.design }}0 small light center orange">
+            <span>{{ rating.design }}0%</span>
+            <div class="slice">
+              <div class="bar">
+              </div>
+              <div class="fill">
+              </div>
+            </div>
+          </div>
+          <p class="text-center">Design</p>
+        </div>
+        <div class="col-4">
+          <div class="c100 p{{ rating.usability }}0 small light center green">
+            <span>{{ rating.usability }}0%</span>
+            <div class="slice">
+              <div class="bar">
+              </div>
+              <div class="fill">
+              </div>
+            </div>
+          </div>
+          <p class="text-center">Usability</p> 
+
+        </div>
+        <div class="col-4">
+          <div class="c100 p{{ rating.content }}0 small light center blue">
+            <span>{{ rating.content }}0%</span>
+            <div class="slice">
+              <div class="bar">
+              </div>
+              <div class="fill">
+              </div>
+            </div>
+          </div>
+          <p class="text-center">Content</p> 
+
+        </div>
+
       {% endfor %}
     </div>
-  </div>
 </div>
 </div>
-{% endblock %}
 
+{% endblock %}
