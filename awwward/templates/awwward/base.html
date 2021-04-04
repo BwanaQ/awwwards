@@ -95,15 +95,37 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
+
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      >Home</i
+                    ></a>
+                  </li>                
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="{% url 'awwward-home' %}"
-                    >Home</i
-                  ></a>
+                  <a class="nav-link" href="#"
+                    >Add Image</a
+                  >
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile' %}">{{user.username}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif%}
               </ul>
               <form class="d-flex">
                 <input
@@ -121,7 +143,12 @@
         </nav>
       </header>
       <main class="flex-shrink-0" style="margin-top: 60px">
-        <div class="container">{% block content %} {% endblock %}</div>
+        
+        <div class="container">
+          {% if messages %} {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %} {% endif %}
+          {% block content %} {% endblock %}</div>
       </main>
       <footer class="footer mt-auto py-3 bg-light">
         <div class="container">

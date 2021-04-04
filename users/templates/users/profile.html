@@ -1,9 +1,11 @@
-{% extends 'blog/base.html' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'awwward/base.html' %} {% block content %} {% load crispy_forms_tags%}
 <div class="row">
   <div class="col-sm-12 col-md-4 text-center">
     <div class="image_outer_container">
       <div class="image_inner_container">
-        <img src="{{user.profile.image.url}}" />
+        <img
+          src="{{user.profile.image.url|default:'img/default-avatar.png' }}"
+        />
       </div>
     </div>
   </div>
