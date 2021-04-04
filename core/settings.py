@@ -92,8 +92,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'awwwards',
+        'USER': 'tom',
+        'PASSWORD': 'y6t5r4e3w2q1',
     }
 }
 
@@ -157,3 +159,4 @@ LOGIN_URL = 'login'
 
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+TIME_ZONE = 'Africa/Nairobi'
