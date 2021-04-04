@@ -13,15 +13,11 @@ from .forms import RatingCreateForm
 class ProjectListView(ListView):
     model = Project
     template_name = 'project_list.html'
+    ordering = ['-timestamp']
     paginate_by = 9
-
-    def get_queryset(self):
-        return Project.objects.order_by('timestamp').reverse()
 
     def get_context_data(self, **kwargs):
         context = super(ProjectListView, self).get_context_data(**kwargs)
-        now = datetime.datetime.now()
-        context['now'] = now
         return context
 
 
@@ -32,6 +28,7 @@ class ProjectDetailView(DetailView):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
         rating_form = RatingCreateForm()
         context['rating_form'] = rating_form
+
         return context
 
 
@@ -41,3 +38,8 @@ class RatingCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('project-detail', kwargs={'pk': self.object.project.pk})
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+
+        return super(CreateArticle, self).form_valid(form)

@@ -1,4 +1,4 @@
-{% extends 'awwward/base.html' %} {% load static %} {% block content %}
+{% extends 'awwward/base.html' %} {% load static %} {% load crispy_forms_tags %}{% block content %}
 <div class="row">
   <div class="col-md-12">
     <p><strong> Site of the Day </strong> {{ now | date:"D d M Y"}}</p>
@@ -6,8 +6,8 @@
 </div>
 <div class="row">
     {% for project in object_list %}
-    <div class="col-md-4">
-      <div class="card border-0 shadow">
+    <div class="col-md-4 mb-5">
+      <div class="card border-0 shadow h-100 ">
         <img
           class="card-img-top"
           src="{{project.image.url}}"
@@ -21,7 +21,7 @@
         <div class="card-footer">
           <small class="text-uppercase">by {{project.creator}}</small>
           <a href="#" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
-          <a href="#" class="btn btn-outline-secondary btn-sm float-end m-2">View Details</a>
+          <a href="{% url 'awwward-detail' project.id %}" class="btn btn-outline-secondary btn-sm float-end m-2">View Details</a>
         </div>
       </div>
     </div>

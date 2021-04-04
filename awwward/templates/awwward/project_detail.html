@@ -1,4 +1,7 @@
-{% extends 'awwward/base.html' %} {% load static %} {% load crispy_form_tags %} {% block content %}
+{% extends 'awwward/base.html' %} 
+{% load crispy_forms_tags %} 
+{% load static %} 
+{% block content %}
 <div class="row">
     <div class="col-md-4">
       <div class="card border-0 shadow">
@@ -16,23 +19,28 @@
         </div>
       </div>
     </div>
-  </div>
+  
   <div class="col-md-8">
-    {% for rating in object.rating_set.all %}
-    <p>{{rating.design}}</p>
-    <p>{{rating.usability}}</p>
-    <p>{{rating.content}}</p>
-    <p>{{rating.creator.username}}</p>
-    <p>{{rating.timestamp}}</p>
-    {% endfor %}
     <form method="post" action="/blog/comment">
       {% csrf_token %}
-      <h3>Add a comment</h3>
-      {{ rating_form.as_p|crispy }}
-      <input type="hidden" name="entry" value="{{ blogentry.pk }}">
+      <h3>Add a rating</h3>
+      {{ rating_form|crispy }}
+      <input type="hidden" name="entry" value="{{ project.pk }}">
       <p><input type="submit"></p>
   </form>
   </div>
+  <div class="row">
+    <div class="col-md-1">
+      {% for rating in project.ratings.all %}
+      <p>{{rating.design}}</p>
+      <p>{{rating.usability}}</p>
+      <p>{{rating.content}}</p>
+      <p>{{rating.creator.username}}</p>
+      <p>{{rating.timestamp}}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 </div>
 {% endblock %}
 
