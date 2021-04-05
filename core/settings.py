@@ -157,6 +157,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'awwward-home'
 LOGIN_URL = 'login'
 
-#prod_db = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 TIME_ZONE = 'Africa/Nairobi'
