@@ -15,6 +15,9 @@
           
           <div class="card-footer">
             <small class="text-uppercase">by {{project.creator}}</small>
+            <a href="{{ project.link }}" target="_blank" class="btn btn-outline-success btn-sm m-2">View Site</a>
+            <a href="{% url 'add_rating' project.id %}" class="btn btn-outline-secondary btn-sm  m-2">Rate Site</a>
+
             {% if project.creator == user %}
             <a href="{% url 'awwward-delete' project.id %}" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
             <a href="{% url 'awwward-update' project.id %}" class="btn btn-outline-primary btn-sm float-end m-2">Edit</a>
@@ -84,7 +87,13 @@
         <p class="text-center">Average</p> 
 
       </div>
+      <div class="col-md-12">
+        {% if rating.creator == user %}
+        <a href="{% url 'rating-delete' rating.id %}" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
+        <a href="{% url 'rating-update' rating.id %}" class="btn btn-outline-primary btn-sm float-end m-2">Edit</a>
+        {% endif %}
 
+      </div>
         {% endfor %}
       {% endif %}
   </div>

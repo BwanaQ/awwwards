@@ -78,10 +78,11 @@ class RatingCreateView(CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         """
-        Overridden so we can make sure the `Ipsum` instance exists
+        Overridden so we can make sure the `Project` instance exists
         before going any further.
         """
         self.project = get_object_or_404(Project, pk=kwargs['pk'])
+
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -91,7 +92,36 @@ class RatingCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        # if you are passing 'pk' from 'urls' to 'DeleteView' for company
-        # capture that 'pk' as companyid and pass it to 'reverse_lazy()' function
         pk = self.kwargs['pk']
         return reverse_lazy('awwward-detail', kwargs={'pk': pk})
+
+
+class RatingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Rating
+    form_class = RatingCreateForm
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        rating = self.get_object()
+        if self.request.user == rating.creator:
+            return True
+        return False
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('awwward-home')
+
+
+class RatingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Rating
+    success_url = '/'
+
+    def test_func(self):
+        rating = self.get_object()
+        if self.request.user == rating.creator:
+            return True
+        return False
