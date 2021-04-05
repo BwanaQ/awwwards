@@ -18,7 +18,6 @@ django-model-utils==4.1.1
 django-phone-field==1.8.1
 django-ranged-response==0.2.0
 django-simple-captcha==0.5.14
-django-star-ratings==0.9.1
 djangorestframework==3.12.4
 gunicorn==20.1.0
 html5lib==1.0.1

@@ -18,7 +18,7 @@ urlpatterns = [
     path('awwward/<int:pk>/delete/',
          ProjectDeleteView.as_view(), name='awwward-delete'),
     path('awwward/<int:pk>/comment/',
-         RatingCreateView.as_view(), name='awwward-delete'),
+         RatingCreateView.as_view(), name='add_rating'),
 
 
 ]

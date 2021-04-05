@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="row">
-    {% for project in object_list %}
+      {% for project in object_list %}
     <div class="col-md-4 mb-5">
       <div class="card border-0 shadow h-100 ">
         <img
@@ -20,11 +20,9 @@
         </div>
         <div class="card-footer">
           <small class="text-uppercase m-3 pt-2">by {{project.creator}}</small>
-          {% if project.creator == user %}
-          <a href="{% url 'awwward-delete' project.id %}" class="btn btn-outline-danger btn-sm float-end m-2">Delete</a>
-          <a href="{% url 'awwward-update' project.id %}" class="btn btn-outline-primary btn-sm float-end m-2">Edit</a>
-          {% endif %}
           <a href="{% url 'awwward-detail' project.id %}" class="btn btn-outline-secondary btn-sm float-end m-2">Details</a>
+          <a href="{% url 'add_rating' project.id %}" class="btn btn-outline-primary btn-sm float-end m-2">Add Comment</a>
+
         </div>
       </div>
     </div>

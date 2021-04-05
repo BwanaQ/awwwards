@@ -10,8 +10,9 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Project, Rating
-from django.urls import reverse
+from django.urls import reverse_lazy
 from .forms import RatingCreateForm
+from django.shortcuts import get_object_or_404
 
 
 class ProjectListView(ListView):
@@ -23,6 +24,13 @@ class ProjectListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ProjectListView, self).get_context_data(**kwargs)
         return context
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Project.objects.filter(title__icontains=query)
+        else:
+            return Project.objects.all()
 
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):
@@ -63,23 +71,27 @@ class ProjectDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
 
-    def get_context_data(self, **kwargs):
-        context = super(ProjectDetailView, self).get_context_data(**kwargs)
-        rating_form = RatingCreateForm()
-        context['rating_form'] = rating_form
-
-        return context
-
 
 class RatingCreateView(CreateView):
     model = Rating
     form_class = RatingCreateForm
 
-    def get_success_url(self):
-        return reverse('awwward-detail', kwargs={'pk': self.object.project.pk})
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Overridden so we can make sure the `Ipsum` instance exists
+        before going any further.
+        """
+        self.project = get_object_or_404(Project, pk=kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
-        form.instance.project = self.object.project.pk
+        form.instance.project = self.project
 
-        return super(CreateRating, self).form_valid(form)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        # if you are passing 'pk' from 'urls' to 'DeleteView' for company
+        # capture that 'pk' as companyid and pass it to 'reverse_lazy()' function
+        pk = self.kwargs['pk']
+        return reverse_lazy('awwward-detail', kwargs={'pk': pk})
