@@ -1064,7 +1064,7 @@
   color: #4db53c;
 }
 .c100.grey .bar,
-.c100.green .fill {
+.c100.grey .fill {
   border-color: #0f0f0f !important;
 }
 .c100.grey:hover > span {

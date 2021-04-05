@@ -20,9 +20,22 @@ class Project(models.Model):
 
 
 class Rating(models.Model):
-    design = models.IntegerField(default=0)
-    usability = models.IntegerField(default=0)
-    content = models.IntegerField(default=0)
+    RATING = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+        (10, '10')
+
+    )
+    design = models.IntegerField(choices=RATING)
+    usability = models.IntegerField(choices=RATING)
+    content = models.IntegerField(choices=RATING)
     creator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='rater')
     project = models.ForeignKey(
@@ -35,5 +48,7 @@ class Rating(models.Model):
     def get_absolute_url(self):
         return reverse('awwward-detail', kwargs={'pk': self.pk})
 
-    def get_average(self):
-        return (int((self.design+self.usability+self.content)/3))
+    def get_average_percentage(self):
+        avg = ((self.design+self.usability+self.content)/3)*10
+        avg_pc = int(avg)
+        return avg_pc

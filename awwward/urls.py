@@ -5,7 +5,9 @@ from .views import (
     ProjectDetailView,
     ProjectCreateView,
     ProjectDeleteView,
-    ProjectUpdateView
+    ProjectUpdateView,
+
+    RatingCreateView
 )
 urlpatterns = [
     path('', ProjectListView.as_view(), name='awwward-home'),
@@ -15,6 +17,8 @@ urlpatterns = [
          ProjectUpdateView.as_view(), name='awwward-update'),
     path('awwward/<int:pk>/delete/',
          ProjectDeleteView.as_view(), name='awwward-delete'),
+    path('awwward/<int:pk>/comment/',
+         RatingCreateView.as_view(), name='awwward-delete'),
 
 
 ]
