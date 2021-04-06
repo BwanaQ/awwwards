@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'phone_field',
     'captcha',
     'crispy_forms',
+    'coverage',
 
     # my apps
     'awwward',
