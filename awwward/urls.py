@@ -19,7 +19,7 @@ urlpatterns = [
          ProjectUpdateView.as_view(), name='awwward-update'),
     path('awwward/<int:pk>/delete/',
          ProjectDeleteView.as_view(), name='awwward-delete'),
-    path('awwward/<int:pk>/comment/',
+    path('awwward/<int:pk>/rate/',
          RatingCreateView.as_view(), name='add_rating'),
 
     path('comment/<int:pk>/update/',
