@@ -68,7 +68,7 @@ class ProjectDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-class ProjectDetailView(LoginRequiredMixin, DetailView):
+class ProjectDetailView(DetailView):
     model = Project
 
 
