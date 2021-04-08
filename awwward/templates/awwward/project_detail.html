@@ -19,12 +19,12 @@
           
           <div class="card-footer">
             <small class="text-uppercase">by {{project.creator}}</small>
-            <a href="{{ project.link }}" target="_blank" class="btn btn-outline-success btn-sm m-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
-            <a href="{% url 'add_rating' project.id %}" class="btn btn-outline-secondary btn-sm  m-2"><i class="fa fa-star" aria-hidden="true"></i></a>
+            <a href="{{ project.link }}" target="_blank" class="btn btn-outline-success btn-circle btn-sm m-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
+            <a href="{% url 'add_rating' project.id %}" class="btn btn-outline-secondary btn-circle btn-sm  m-2"><i class="fa fa-star" aria-hidden="true"></i></a>
 
             {% if project.creator == user %}
-            <a href="{% url 'awwward-delete' project.id %}" class="btn btn-outline-danger btn-sm float-end m-2"><i class="far fa-trash-alt"></i></a>
-            <a href="{% url 'awwward-update' project.id %}" class="btn btn-outline-primary btn-sm float-end m-2"><i class="fas fa-edit"></i></a>
+            <a href="{% url 'awwward-delete' project.id %}" class="btn btn-outline-danger btn-circle btn-sm float-end m-2"><i class="far fa-trash-alt"></i></a>
+            <a href="{% url 'awwward-update' project.id %}" class="btn btn-outline-primary  btn-sm btn-circle float-end m-2"><i class="fas fa-edit"></i></a>
             {% endif %}
           </div>
         </div>

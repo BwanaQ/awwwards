@@ -1,4 +1,5 @@
-{% extends 'awwward/base.html' %} {% block content %} {% load crispy_forms_tags%}
+{% extends 'awwward/base.html' %} {% block content %} {% load
+crispy_forms_tags%}
 <div class="row">
   <div class="col-sm-12 col-md-4 text-center">
     <div class="image_outer_container">
@@ -21,7 +22,6 @@
     <p><strong> Bio: </strong></p>
     <p>{{user.profile.bio}}</p>
   </div>
-
 </div>
 <div class="row">
   <div class="col-md-3"></div>
@@ -53,8 +53,10 @@
       />
       <div class="card-body">
         <h5 class="card-title">
-          <small class="text-center text-uppercase text-muted">{{ project.title }}</small>
-          <br/>
+          <small class="text-center text-uppercase text-muted"
+            >{{ project.title }}</small
+          >
+          <br />
           <strong>{{project.creator}}</strong
           ><span class="float-end text muted"
             ><small>{{project.timestamp| date:"D d M Y"}}</small></span

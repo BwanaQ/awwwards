@@ -13,6 +13,7 @@ from .models import Project, Rating
 from django.urls import reverse_lazy
 from .forms import RatingCreateForm
 from django.shortcuts import get_object_or_404
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProjectListView(ListView):
@@ -33,9 +34,10 @@ class ProjectListView(ListView):
             return Project.objects.all()
 
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Project
     fields = ['image', 'title', 'description', 'link']
+    success_message = "The Project %(title) was created successfully!"
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -45,6 +47,7 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
 class ProjectUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Project
     fields = ['image', 'title', 'description', 'link']
+    success_message = "The Project %(title) was updated successfully!"
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -60,6 +63,7 @@ class ProjectUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class ProjectDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Project
     success_url = '/'
+    success_message = "The Project %(title) was deleted successfully!"
 
     def test_func(self):
         project = self.get_object()
@@ -75,6 +79,7 @@ class ProjectDetailView(DetailView):
 class RatingCreateView(LoginRequiredMixin, CreateView):
     model = Rating
     form_class = RatingCreateForm
+    success_message = "Rating was created successfully!"
 
     def dispatch(self, request, *args, **kwargs):
         """
@@ -99,6 +104,7 @@ class RatingCreateView(LoginRequiredMixin, CreateView):
 class RatingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Rating
     form_class = RatingCreateForm
+    success_message = "Rating was updated successfully!"
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -119,6 +125,7 @@ class RatingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class RatingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Rating
     success_url = '/'
+    success_message = "Rating was deleted successfully!"
 
     def test_func(self):
         rating = self.get_object()
