@@ -1,22 +1,24 @@
-{% extends 'awwward/base.html' %} 
-{% block content %} 
-{% load crispy_forms_tags %}
-<div>
-  <form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Join Today</legend>
-      {{ form|crispy }}
-    </fieldset>
-    <div class="form-group">
-      <button class="btn btn-outline-info" type="submit">Sign Up</button>
+{% extends 'users/base.html' %} {% block content %} {% load crispy_forms_tags %}
+<div class="d-flex justify-content-center h-100" style="padding-top: 10%">
+  <div class="card2">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Join Today</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group text-light">
+        <button class="btn btn-outline-info mt-3" type="submit">Sign Up</button>
+      </div>
+    </form>
+    <div class="border-top mt-3">
+      <small class="text-light"
+        >Already have an account?
+        <a class="ms-2" href="{% url 'login' %}" class="links"
+          >Sign In</a
+        ></small
+      >
     </div>
-  </form>
-  <div class="border-top pt-3">
-    <small class="text-muted"
-      >Already have an account?
-      <a class="ms-2" href="{% url 'login' %}">Sign In</a></small
-    >
   </div>
 </div>
 {% endblock %}

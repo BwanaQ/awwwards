@@ -72,7 +72,7 @@ class ProjectDetailView(DetailView):
     model = Project
 
 
-class RatingCreateView(CreateView):
+class RatingCreateView(LoginRequiredMixin, CreateView):
     model = Rating
     form_class = RatingCreateForm
 

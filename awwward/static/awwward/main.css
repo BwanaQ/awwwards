@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,8 +15,9 @@
   margin: auto;
 }
 body,
-wrapper {
+html {
   min-height: 100vh;
+  font-family: "Numans", sans-serif;
 }
 
 .flex-fill {
